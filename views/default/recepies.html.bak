@@ -1,0 +1,13 @@
+{{extend 'layout.html'}}
+<h1 class="text-center well well-lg text-info">Recepies</h1>
+<div class="container">
+    <div class="row">
+        {{count=0}}
+        {{for image in images:}}
+            <div class="col-md-3">
+                <img class="image-responsive img-thumbnail img-rounded" src="{{=URL('static','images/recipie/%s' %(image.image_file))}}" style="width:auto; height:300px">
+            <div class="text-center lead">{{=image.name}}</div>
+            </div>
+        {{pass}}
+    </div>
+</div>

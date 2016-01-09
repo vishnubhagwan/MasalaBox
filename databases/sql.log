@@ -1,0 +1,98 @@
+timestamp: 2015-12-20T11:52:51.268852
+CREATE TABLE auth_user(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    first_name CHAR(128),
+    last_name CHAR(128),
+    email CHAR(512),
+    password CHAR(512),
+    registration_key CHAR(512),
+    reset_password_key CHAR(512),
+    registration_id CHAR(512)
+);
+success!
+timestamp: 2015-12-20T11:52:51.644629
+CREATE TABLE auth_group(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    role CHAR(512),
+    description TEXT
+);
+success!
+timestamp: 2015-12-20T11:52:52.023590
+CREATE TABLE auth_membership(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_id INTEGER REFERENCES auth_user (id) ON DELETE CASCADE,
+    group_id INTEGER REFERENCES auth_group (id) ON DELETE CASCADE
+);
+success!
+timestamp: 2015-12-20T11:52:52.180624
+CREATE TABLE auth_permission(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    group_id INTEGER REFERENCES auth_group (id) ON DELETE CASCADE,
+    name CHAR(512),
+    table_name CHAR(512),
+    record_id INTEGER
+);
+success!
+timestamp: 2015-12-20T11:52:52.301683
+CREATE TABLE auth_event(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    time_stamp TIMESTAMP,
+    client_ip CHAR(512),
+    user_id INTEGER REFERENCES auth_user (id) ON DELETE CASCADE,
+    origin CHAR(512),
+    description TEXT
+);
+success!
+timestamp: 2015-12-20T11:52:52.423036
+CREATE TABLE auth_cas(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_id INTEGER REFERENCES auth_user (id) ON DELETE CASCADE,
+    created_on TIMESTAMP,
+    service CHAR(512),
+    ticket CHAR(512),
+    renew CHAR(1)
+);
+success!
+timestamp: 2015-12-21T23:49:23.766178
+CREATE TABLE carousel(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    is_enabled CHAR(1),
+    name CHAR(256) NOT NULL,
+    alt CHAR(256),
+    description CHAR(512),
+    image_file CHAR(512),
+    created_on TIMESTAMP
+);
+success!
+timestamp: 2015-12-23T14:20:29.061322
+CREATE TABLE ground(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name CHAR(256) NOT NULL,
+    image_file CHAR(512),
+    created_on TIMESTAMP
+);
+success!
+timestamp: 2015-12-25T15:38:11.452068
+CREATE TABLE blend(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name CHAR(256) NOT NULL,
+    image_file CHAR(512),
+    created_on TIMESTAMP
+);
+success!
+timestamp: 2015-12-25T15:57:36.808720
+CREATE TABLE recepies(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name CHAR(256) NOT NULL,
+    image_file CHAR(512),
+    created_on TIMESTAMP
+);
+success!
+timestamp: 2015-12-25T16:35:46.487421
+CREATE TABLE recipe(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name CHAR(256) NOT NULL,
+    image_file CHAR(512),
+    created_on TIMESTAMP
+);
+success!

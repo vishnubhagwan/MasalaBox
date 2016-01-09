@@ -1,0 +1,50 @@
+{{extend 'layout.html'}}
+{{from os import path}}
+{{block header}}
+    <header class="container-fluid background">
+      <div class="jumbotron text-center">
+          <img class="img-responsive" src="{{=URL('static','images/background.png')}}" style="height:90%; width:100%; margin:0">
+      </div>
+    </header>
+{{end}}
+
+<!--Carousel ================================================== -->
+<div id="myCarousel" class="carousel slide" style="width: auto; height: 300px;">
+    <ol class="carousel-indicators">
+    {{i=1}}
+    {{while  i<= MAX_IMAGES:}}
+        <li data-target="#myCarousel" data-slide-to="{{=i-1}}" {{if i==0:}}class="active"{{pass}}></li>
+    {{i=i+1}}
+    {{pass}}
+    </ol>
+    <div class="carousel-inner">
+    {{for index, row in enum_images:}}
+        <div class="item {{if index==0:}}active{{pass}}">
+            <img class="img-responsive" src="{{=URL('static','images/carousel/%s' %(row.image_file))}}" style="width: 100%; height: 300px; margin: 0 auto"/>
+            <div class="container">
+                <div class="carousel-caption">
+                <h3>
+                    {{=row.name}}
+                </h3>
+                <p>
+                    {{=row.description}}
+                </p>
+                </div>
+            </div>
+        </div>
+    {{pass}}
+    </div>
+      <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a>
+      <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>
+    </div>
+<!-- /.carousel -->
+
+{{if 'message' in globals():}}
+<h1 class="page-header text-muted">{{=message}}</h1>
+{{pass}}
+<blockquote>
+<p class="text-muted text-justify">Spices have a long and ancient history, especially in India, where they are a part of life and heritage. In every home & in every province across the country, different spices and blends are used to create different and distinctive tastes in dishes. Several decades ago, housewives used to grind their spices manually at home and make their own blends for use in their cooking. To make this process easier for the housewife, ’MAHASHIAN DI HATTI’ (MDH) visualised the concept of ready-to-use ground spices.</p>
+</blockquote>
+<blockquote>
+<p class="text-muted text-justify">Starting with manually ground spices, MDH soon switched over to automatic machines to meet the fast growing demand for MDH Spices. So much so today spices worth crores of rupees are manufactured and packed by modern machines and sold throughout India and abroad through a network of over 1000 Stockists and over 4 Lacs retail dealers. These machines now have a capacity of producing 30 tones of spices in powders packed in beautiful consumer pack of different sizes (10g to 500g) in a day.</p>
+</blockquote>
