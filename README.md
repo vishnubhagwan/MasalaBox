@@ -1,2 +1,2 @@
 # MasalaBox
-Code for MasalBox design
+Code for Shri Nimad MasalaBox
